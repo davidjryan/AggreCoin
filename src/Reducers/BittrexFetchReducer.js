@@ -32,7 +32,7 @@ const BittrexFetchReducer = (state = initialState, action) => {
         isLoading: false,
         bittrexData: [],
         hasErrored: true,
-        errorMessage: action.err
+        errorMessage: action.payload
       };
     default:
       return state;
