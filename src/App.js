@@ -3,6 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+  }
+
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,4 +26,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
