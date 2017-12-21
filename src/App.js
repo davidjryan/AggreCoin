@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import BittrexDataFetch from './Actions/BittrexDataFetch';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
 
   componentDidMount() {
-
+    this.props.BittrexDataFetch()
   }
 
   render() {
@@ -26,4 +25,14 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+const mapStateToProps = (state) => {
+  return {
+    bittrex: state.bittrex.bittrexData,
+    hasErrored: state.bittrex.hasErrored,
+    isLoading: state.bittrex.isLoading,
+    errorMessage: state.bittrex.errorMessage
+  };
+};
+
+export default connect(mapStateToProps, { BittrexDataFetch })(App);
