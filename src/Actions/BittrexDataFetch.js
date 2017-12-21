@@ -12,8 +12,7 @@ export default function BittrexDataFetch() {
     return fetch('https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-ETH&type=both')
       .then(res => res.json())
       .then(res => {
-        console.log(res)
-        return dispatch({ type: FETCHING_BITTREX_DATA_SUCCESS, payload: res.data });
+        return dispatch({ type: FETCHING_BITTREX_DATA_SUCCESS, payload: res.result })
       })
       .catch(err => {
         return dispatch({ type: FETCHING_BITTREX_DATA_FAIL, payload: err });
