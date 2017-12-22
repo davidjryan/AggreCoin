@@ -27,11 +27,13 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
+  const { bittrexData, hasErrored, isLoading, errorMessage } = state.bittrex;
+  
   return {
-    bittrex: state.bittrex.bittrexData,
-    hasErrored: state.bittrex.hasErrored,
-    isLoading: state.bittrex.isLoading,
-    errorMessage: state.bittrex.errorMessage
+    bittrexData,
+    hasErrored,
+    isLoading,
+    errorMessage
   };
 };
 
