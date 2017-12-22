@@ -17,6 +17,5 @@ export default function BittrexDataFetch() {
       .catch(err => {
         return dispatch({ type: FETCHING_BITTREX_DATA_FAIL, payload: err });
       });
-
   }
 }
