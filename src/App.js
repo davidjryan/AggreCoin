@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BittrexDataFetch from './Actions/BittrexDataFetch';
+import connection from './PoloniexDataFetch';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
 
-  componentDidMount() {
+  async componentDidMount() {
     this.props.BittrexDataFetch()
+    const poloniex = await connection.open()
+    debugger;
   }
 
   render() {
