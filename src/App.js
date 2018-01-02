@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BittrexDataFetch from './Actions/BittrexDataFetch';
+import PoloniexDataFetch from './Actions/PoloniexDataFetch';
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,6 +10,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.BittrexDataFetch()
+    this.props.PoloniexDataFetch()
   }
 
   render() {
@@ -37,4 +40,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { BittrexDataFetch })(App);
+export default connect(mapStateToProps, { BittrexDataFetch, PoloniexDataFetch })(App);
