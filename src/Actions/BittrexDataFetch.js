@@ -1,7 +1,7 @@
 import { 
   FETCHING_BITTREX_DATA,
   FETCHING_BITTREX_DATA_SUCCESS,
-  FETCHING_BITTREX_DATA_FAIL
+  FETCHING_BITTREX_DATA_FAIL,
 } from '../Utils/ActionTypes';
 
 export default function BittrexDataFetch() {
