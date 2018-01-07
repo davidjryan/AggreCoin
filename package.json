@@ -13,7 +13,8 @@
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
-    "victory": "^0.24.3"
+    "victory": "^0.24.3",
+    "redux-logger": "^3.0.6"
   },
   "scripts": {
     "start-js": "react-scripts start",
@@ -31,10 +32,12 @@
     "enzyme-adapter-react-15": "^1.0.5",
     "enzyme-adapter-react-16": "^1.1.0",
     "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
     "node-sass-chokidar": "0.0.3",
     "prop-types": "^15.6.0",
-    "react-router-redux": "^4.0.8",
-    "redux-logger": "^3.0.6"
+    "react-router-redux": "^4.0.8"
   }
 }
