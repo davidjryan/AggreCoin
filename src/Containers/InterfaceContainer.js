@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './InterfaceContainer.css';
 
 class InterfaceContainer extends Component {
   render() {
