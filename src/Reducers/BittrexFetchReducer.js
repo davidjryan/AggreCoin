@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   isLoading: false,
-  bittrexData: [],
+  bittrexData: null,
   hasErrored: false,
   errorMessage: null,
 };
