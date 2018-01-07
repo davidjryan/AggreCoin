@@ -2,7 +2,7 @@ import {
   FETCHING_POLONIEX_DATA,
   FETCHING_POLONIEX_DATA_SUCCESS,
   FETCHING_POLONIEX_DATA_FAIL
-} from '../Utils/ActionTypes';
+} from '../../Utils/ActionTypes';
 
 const initialState = {
   isLoading: false,

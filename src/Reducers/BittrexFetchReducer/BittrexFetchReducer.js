@@ -2,7 +2,7 @@ import {
   FETCHING_BITTREX_DATA,
   FETCHING_BITTREX_DATA_SUCCESS,
   FETCHING_BITTREX_DATA_FAIL,
-} from '../Utils/ActionTypes';
+} from '../../Utils/ActionTypes';
 
 const initialState = {
   isLoading: false,
