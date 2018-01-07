@@ -7,15 +7,35 @@ import {
 export default function BittrexDataFetch() {
   return dispatch => {
 
-    dispatch({ type: FETCHING_BITTREX_DATA })
+    dispatch(bittrexLoading())
 
     return fetch('https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-ETH&type=both')
       .then(res => res.json())
       .then(res => {
-        return dispatch({ type: FETCHING_BITTREX_DATA_SUCCESS, payload: res.result })
+        return dispatch(bittrexSuccess(res.result))
       })
       .catch(err => {
-        return dispatch({ type: FETCHING_BITTREX_DATA_FAIL, payload: err });
+        return dispatch(bittrexFail(err));
       });
   }
 }
+
+const bittrexFail = (err) => {
+  return {
+    type: FETCHING_BITTREX_DATA_FAIL,
+    payload: err,
+  }  
+};
+
+const bittrexSuccess = (result) => {
+  return {
+    type: FETCHING_BITTREX_DATA_SUCCESS,
+    payload: result,
+  }  
+};
+
+const bittrexLoading = () => {
+  return {
+    type: FETCHING_BITTREX_DATA,
+  }  
+};
