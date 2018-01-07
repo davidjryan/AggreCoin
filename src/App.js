@@ -8,10 +8,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header />
+        <header>
+          <h1>aggreCoin</h1>
+        </header>
         <main>
           <GraphContainer />
-          {/* <InterfaceContainer /> */}
+          <InterfaceContainer />
         </main>
       </div>
     );
