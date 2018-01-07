@@ -8,24 +8,10 @@ import {
   VictoryZoomContainer,
 } from 'victory';
 
-import BittrexDataFetch from '../Actions/BittrexDataFetch';
-import PoloniexDataFetch from '../Actions/PoloniexDataFetch';
+import BittrexDataFetch from '../Actions/BittrexDataFetch/BittrexDataFetch';
+import PoloniexDataFetch from '../Actions/PoloniexDataFetch/PoloniexDataFetch';
 
 class GraphContainer extends Component {
-  
-  // combineData() {
-  //   const aggregateData = []
-  //   return _.range(5).map(() => {
-  //     return [
-  //       { x: 1, y: _.random(1, 5) },
-  //       { x: 2, y: _.random(1, 10) },
-  //       { x: 3, y: _.random(2, 10) },
-  //       { x: 4, y: _.random(2, 10) },
-  //       { x: 5, y: _.random(2, 15) }
-  //     ];
-  //   });
-  // }
-
 
   componentWillMount() {
     this.props.BittrexDataFetch();
@@ -85,22 +71,22 @@ class GraphContainer extends Component {
 
 
   combineData(bittrexBuy, poloniexBuy, bittrexSell, poloniexSell) {
-    debugger;
     return [ [...bittrexBuy, ...poloniexBuy], [...bittrexSell, ...poloniexSell] ]
   }
 
 
   render() {
-    if (!this.props.bittrex.bittrexData) {
+    if (!this.props.bittrex.bittrexData && !this.props.poloniex.poloniexData) {
       return <div>Loading...</div>
     }
-
+    console.log(this.props.bittrex.bittrexData)
     return (
       <VictoryChart
         theme={VictoryTheme.material}
         animate={{ duration: 1000 }}
         domain={{ y: [0, 300] }}
-        height={300}
+        height={250}
+        width={250}
         >
           {this.combineData(this.bittrexBuy(), this.poloniexBuy(), this.bittrexSell(), this.poloniexSell()).map((data, i) => {
             console.log(data)
