@@ -6,5 +6,5 @@ import CoinSelectReducer from './CoinSelectReducer/CoinSelectReducer';
 export default combineReducers({
   coins: CoinSelectReducer,
   bittrex: BittrexFetchReducer,
-  poloniex: PoloniexFetchReducer,
+  poloniex: PoloniexFetchReducer
 });

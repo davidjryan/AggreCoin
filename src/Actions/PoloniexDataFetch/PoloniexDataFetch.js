@@ -4,38 +4,39 @@ import {
   FETCHING_POLONIEX_DATA_FAIL
 } from '../../Utils/ActionTypes';
 
-export const PoloniexDataFetch = () => {
+export const PoloniexDataFetch = (main, second) => {
+
   return dispatch => {
 
-    dispatch(poloniexLoading())
+    dispatch(poloniexLoading());
 
-    return fetch('https://poloniex.com/public?command=returnOrderBook&currencyPair=BTC_ETH')
+    return fetch(`https://poloniex.com/public?command=returnOrderBook&currencyPair=${main}_${second}`)
       .then(res => res.json())
       .then(res => {
-        return dispatch(poloniexSuccess(res))
+        return dispatch(poloniexSuccess(res));
       })
-      .catch(err => {
-        return dispatch(poloniexFail(err));
+      .catch(error => {
+        return dispatch(poloniexFail(error));
       });
-  }
-}
+  };
+};
 
-export const poloniexFail = (err) => {
+export const poloniexFail = (error) => {
   return {
     type: FETCHING_POLONIEX_DATA_FAIL,
-    payload: err,
-  }
+    payload: error
+  };
 };
 
 export const poloniexSuccess = (result) => {
   return {
     type: FETCHING_POLONIEX_DATA_SUCCESS,
-    payload: result,
-  }
+    payload: result
+  };
 };
 
 export const poloniexLoading = () => {
   return {
-    type: FETCHING_POLONIEX_DATA,
-  }
+    type: FETCHING_POLONIEX_DATA
+  };
 };

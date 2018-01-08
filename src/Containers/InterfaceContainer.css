@@ -1,8 +1,5 @@
 section {
   display: flex;
   justify-content: space-around;
-  padding: 10px; }
-
-select {
-  height: 30px;
-  width: 100px; }
+  padding: 10px;
+  height: 100px; }

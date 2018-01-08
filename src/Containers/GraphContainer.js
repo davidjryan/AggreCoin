@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   VictoryStack,
-  VictoryLine,
+  VictoryArea,
   VictoryChart,
   VictoryTheme,
-  VictoryZoomContainer,
+  VictoryLegend
 } from 'victory';
 
 import { BittrexDataFetch } from '../Actions/BittrexDataFetch/BittrexDataFetch';
@@ -14,30 +14,31 @@ import { PoloniexDataFetch } from '../Actions/PoloniexDataFetch/PoloniexDataFetc
 class GraphContainer extends Component {
 
   componentWillMount() {
-    this.props.BittrexDataFetch();
-    this.props.PoloniexDataFetch();
+    const { mainCoin, secondCoin } = this.props.coins;
+    this.props.BittrexDataFetch(mainCoin, secondCoin);
+    this.props.PoloniexDataFetch(mainCoin, secondCoin);
   }
 
   bittrexBuy() {
     const { buy } = this.props.bittrex.bittrexData;
-    const buyTruncated = buy.splice(0, 50)
+    const buyTruncated = buy.splice(0, 50);
     const buyData = buyTruncated.map((order) => {
       return {
         x: order.Rate,
-        y: order.Quantity,
+        y: order.Quantity
       };
     });
 
-    return buyData
+    return buyData;
   }
 
   bittrexSell() {
     const { sell } = this.props.bittrex.bittrexData;
-    const sellTruncated = sell.splice(0, 50)
+    const sellTruncated = sell.splice(0, 50);
     const sellData = sellTruncated.map((order) => {
       return {
         x: order.Rate,
-        y: order.Quantity,
+        y: order.Quantity
       };
     });
 
@@ -50,7 +51,7 @@ class GraphContainer extends Component {
     const buyData = bids.map((order) => {
       return {
         x: parseFloat(order[0]),
-        y: order[1],
+        y: order[1]
       };
     });
 
@@ -62,7 +63,7 @@ class GraphContainer extends Component {
     const sellData = asks.map((order) => {
       return {
         x: parseFloat(order[0]),
-        y: order[1],
+        y: order[1]
       };
     });
 
@@ -71,15 +72,18 @@ class GraphContainer extends Component {
 
 
   combineData() {
-    return [ [...this.bittrexBuy(), ...this.poloniexBuy()], [...this.bittrexSell(), ...this.poloniexSell()] ]
+    return [[
+      ...this.bittrexBuy(),
+      ...this.poloniexBuy()],
+    [...this.bittrexSell(), 
+      ...this.poloniexSell()]];
   }
 
 
   render() {
     if (!this.props.bittrex.bittrexData || !this.props.poloniex.poloniexData) {
-      return <div>Loading...</div>
+      return <div>Loading...</div>;
     }
-    console.log(this.props.bittrex.bittrexData)
     return (
       <VictoryChart
         className="chart"
@@ -88,11 +92,19 @@ class GraphContainer extends Component {
         domain={{ y: [0, 300] }}
         height={200}
         width={200}
-        >
+      >
+        <VictoryLegend
+          data={[
+            { name: "Buy", symbol: { fill: "tomato" } },
+            { name: "Sell", symbol: { fill: "orange" } }
+ 
+          ]}
+        />
+        <VictoryStack>
+
           {this.combineData().map((data, i) => {
-            console.log(data)
             return (
-              <VictoryLine
+              <VictoryArea
                 key={i}
                 data={data}
                 interpolation={"step"}
@@ -100,17 +112,18 @@ class GraphContainer extends Component {
               />
             );
           })}
+        </VictoryStack>
       </VictoryChart>
     );
   }
 }
 
 const mapStateToProps = (store) => {
-  const { bittrex, poloniex } = store;
-
+  const { bittrex, poloniex, coins } = store;
   return {
     bittrex,
     poloniex,
+    coins
   };
 };
 

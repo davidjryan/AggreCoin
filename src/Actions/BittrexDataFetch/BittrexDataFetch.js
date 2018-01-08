@@ -1,41 +1,41 @@
 import { 
   FETCHING_BITTREX_DATA,
   FETCHING_BITTREX_DATA_SUCCESS,
-  FETCHING_BITTREX_DATA_FAIL,
+  FETCHING_BITTREX_DATA_FAIL
 } from '../../Utils/ActionTypes';
 
-export const BittrexDataFetch = () => {
+export const BittrexDataFetch = (main, second) => {
   return dispatch => {
 
-    dispatch(bittrexLoading())
+    dispatch(bittrexLoading());
 
-    return fetch('https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-ETH&type=both')
+    return fetch(`https://bittrex.com/api/v1.1/public/getorderbook?market=${main}-${second}&type=both`)
       .then(res => res.json())
       .then(res => {
-        return dispatch(bittrexSuccess(res.result))
+        return dispatch(bittrexSuccess(res.result));
       })
-      .catch(err => {
-        return dispatch(bittrexFail(err));
+      .catch(error => {
+        return dispatch(bittrexFail(error));
       });
-  }
-}
+  };
+};
 
-export const bittrexFail = (err) => {
+export const bittrexFail = (error) => {
   return {
     type: FETCHING_BITTREX_DATA_FAIL,
-    payload: err,
-  }  
+    payload: error
+  };
 };
 
 export const bittrexSuccess = (result) => {
   return {
     type: FETCHING_BITTREX_DATA_SUCCESS,
-    payload: result,
-  }  
+    payload: result
+  }  ;
 };
 
 export const bittrexLoading = () => {
   return {
-    type: FETCHING_BITTREX_DATA,
-  }  
+    type: FETCHING_BITTREX_DATA
+  };
 };
