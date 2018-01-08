@@ -4,7 +4,7 @@ import {
   FETCHING_POLONIEX_DATA_FAIL
 } from '../../Utils/ActionTypes';
 
-export default function PoloniexDataFetch() {
+export const PoloniexDataFetch = () => {
   return dispatch => {
 
     dispatch(poloniexLoading())
@@ -20,21 +20,21 @@ export default function PoloniexDataFetch() {
   }
 }
 
-const poloniexFail = (err) => {
+export const poloniexFail = (err) => {
   return {
     type: FETCHING_POLONIEX_DATA_FAIL,
     payload: err,
   }
 };
 
-const poloniexSuccess = (result) => {
+export const poloniexSuccess = (result) => {
   return {
     type: FETCHING_POLONIEX_DATA_SUCCESS,
     payload: result,
   }
 };
 
-const poloniexLoading = () => {
+export const poloniexLoading = () => {
   return {
     type: FETCHING_POLONIEX_DATA,
   }
