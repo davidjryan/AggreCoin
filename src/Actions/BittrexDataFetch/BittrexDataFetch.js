@@ -2,9 +2,9 @@ import {
   FETCHING_BITTREX_DATA,
   FETCHING_BITTREX_DATA_SUCCESS,
   FETCHING_BITTREX_DATA_FAIL,
-} from '../Utils/ActionTypes';
+} from '../../Utils/ActionTypes';
 
-export default function BittrexDataFetch() {
+export const BittrexDataFetch = () => {
   return dispatch => {
 
     dispatch(bittrexLoading())
@@ -20,21 +20,21 @@ export default function BittrexDataFetch() {
   }
 }
 
-const bittrexFail = (err) => {
+export const bittrexFail = (err) => {
   return {
     type: FETCHING_BITTREX_DATA_FAIL,
     payload: err,
   }  
 };
 
-const bittrexSuccess = (result) => {
+export const bittrexSuccess = (result) => {
   return {
     type: FETCHING_BITTREX_DATA_SUCCESS,
     payload: result,
   }  
 };
 
-const bittrexLoading = () => {
+export const bittrexLoading = () => {
   return {
     type: FETCHING_BITTREX_DATA,
   }  

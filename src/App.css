@@ -7,8 +7,10 @@ header {
   display: flex;
   height: 80px;
   padding: 10px;
+  background-color: #062B2E;
 }
 
 h1 {
   align-self: center;
+  color: #2B9698;
 }
