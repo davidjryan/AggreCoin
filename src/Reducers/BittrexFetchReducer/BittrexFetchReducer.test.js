@@ -3,14 +3,14 @@ import BittrexFetchReducer from './BittrexFetchReducer';
 
 describe('bittrex reducer', () => {
   const mockBittrexData = [["0.06776560", 44.457], ["0.06776561", 16.67325956]];
-  const mockError = { error: "TYPE_ERROR" }
+  const mockError = { error: "TYPE_ERROR" };
 
   it('should have a default state', () => {
     expect(BittrexFetchReducer(undefined, {})).toEqual({
       isLoading: false,
-      bittrexData: [],
+      bittrexData: null,
       hasErrored: false,
-      errorMessage: null,
+      errorMessage: null
     });
   });
 
@@ -27,7 +27,7 @@ describe('bittrex reducer', () => {
       isLoading: true,
       bittrexData: null,
       hasErrored: false,
-      errorMessage: null,
+      errorMessage: null
     });
   });
 
@@ -38,7 +38,7 @@ describe('bittrex reducer', () => {
       isLoading: false,
       bittrexData: [],
       hasErrored: true,
-      errorMessage: mockError,
+      errorMessage: mockError
     });
   });
 });

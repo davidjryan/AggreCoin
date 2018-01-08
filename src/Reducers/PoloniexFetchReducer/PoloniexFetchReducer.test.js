@@ -3,14 +3,14 @@ import PoloniexFetchReducer from './PoloniexFetchReducer';
 
 describe('poloniex reducer', () => {
   const mockPoloniexData = [["0.06776560", 44.457], ["0.06776561", 16.67325956]];
-  const mockError = { error: "TYPE_ERROR" }
+  const mockError = { error: "TYPE_ERROR" };
 
   it('should have a default state', () => {
     expect(PoloniexFetchReducer(undefined, {})).toEqual({
       isLoading: false,
-      poloniexData: [],
+      poloniexData: null,
       hasErrored: false,
-      errorMessage: null,
+      errorMessage: null
     });
   });
 
@@ -27,7 +27,7 @@ describe('poloniex reducer', () => {
       isLoading: true,
       poloniexData: null,
       hasErrored: false,
-      errorMessage: null,
+      errorMessage: null
     });
   });
 
@@ -38,7 +38,7 @@ describe('poloniex reducer', () => {
       isLoading: false,
       poloniexData: [],
       hasErrored: true,
-      errorMessage: mockError,
+      errorMessage: mockError
     });
   });
 });
