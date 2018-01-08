@@ -8,7 +8,7 @@ import {
   VictoryZoomContainer,
 } from 'victory';
 
-import BittrexDataFetch from '../Actions/BittrexDataFetch/BittrexDataFetch';
+import { BittrexDataFetch } from '../Actions/BittrexDataFetch/BittrexDataFetch';
 import PoloniexDataFetch from '../Actions/PoloniexDataFetch/PoloniexDataFetch';
 
 class GraphContainer extends Component {
