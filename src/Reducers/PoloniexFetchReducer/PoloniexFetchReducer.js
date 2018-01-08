@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   isLoading: false,
-  poloniexData: [],
+  poloniexData: null,
   hasErrored: false,
   errorMessage: null
 };
