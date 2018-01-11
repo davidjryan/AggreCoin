@@ -9,7 +9,7 @@ describe('poloniex data fetch action', () => {
     }));
   });
 
-  it('should fetch bittrexdata', async () => {
+  it.skip('should fetch bittrexdata', async () => {
     const bittrexData = await polAction.PoloniexDataFetch();
     expect(bittrexData).toEqual([["0.06776560", 44.457], ["0.06776561", 16.67325956]]);
   });
