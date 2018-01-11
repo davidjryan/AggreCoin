@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 import { 
   FETCHING_BITTREX_DATA,
   FETCHING_BITTREX_DATA_SUCCESS,
@@ -6,7 +8,7 @@ import {
 
 export const BittrexDataFetch = (main, second) => {
   return dispatch => {
-
+    
     dispatch(bittrexLoading());
 
     return fetch(`https://bittrex.com/api/v1.1/public/getorderbook?market=${main}-${second}&type=both`)
