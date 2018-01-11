@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import GraphContainer from './Containers/GraphContainer';
-import InterfaceContainer from './Containers/InterfaceContainer';
+import GraphContainer from './Containers/GraphContainer/GraphContainer';
+import InterfaceContainer from './Containers/InterfaceContainer/InterfaceContainer';
 import './App.css';
 
 class App extends Component {
