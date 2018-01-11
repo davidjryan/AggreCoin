@@ -1,0 +1,12 @@
+section {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  height: 100px;
+
+}
+
+.list-containers {
+  display: flex;
+  flex-direction: column
+}
