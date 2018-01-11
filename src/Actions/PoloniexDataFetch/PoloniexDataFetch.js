@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-
+import { polFetch } from '../../Utils/apicall';
 import {
   FETCHING_POLONIEX_DATA,
   FETCHING_POLONIEX_DATA_SUCCESS,
@@ -11,15 +11,8 @@ export const PoloniexDataFetch = (main, second) => {
   return dispatch => {
 
     dispatch(poloniexLoading());
-
-    return fetch(`https://poloniex.com/public?command=returnOrderBook&currencyPair=${main}_${second}`)
-      .then(res => res.json())
-      .then(res => {
-        return dispatch(poloniexSuccess(res));
-      })
-      .catch(error => {
-        return dispatch(poloniexFail(error));
-      });
+    
+    return polFetch(main, second);
   };
 };
 

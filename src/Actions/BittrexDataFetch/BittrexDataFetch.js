@@ -1,5 +1,4 @@
-/* eslint-disable max-len */
-
+import { bitFetch } from '../../Utils/apicall';
 import { 
   FETCHING_BITTREX_DATA,
   FETCHING_BITTREX_DATA_SUCCESS,
@@ -7,18 +6,12 @@ import {
 } from '../../Utils/ActionTypes';
 
 export const BittrexDataFetch = (main, second) => {
+  
   return dispatch => {
-    
+
     dispatch(bittrexLoading());
 
-    return fetch(`https://bittrex.com/api/v1.1/public/getorderbook?market=${main}-${second}&type=both`)
-      .then(res => res.json())
-      .then(res => {
-        return dispatch(bittrexSuccess(res.result));
-      })
-      .catch(error => {
-        return dispatch(bittrexFail(error));
-      });
+    return bitFetch(main, second);
   };
 };
 
