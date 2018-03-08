@@ -1,18 +1,18 @@
-import { bitFetch } from '../../Utils/apicall';
 import { 
   FETCHING_BITTREX_DATA,
   FETCHING_BITTREX_DATA_SUCCESS,
   FETCHING_BITTREX_DATA_FAIL
 } from '../../Utils/ActionTypes';
 
-export const BittrexDataFetch = (main, second) => {
-  
-  return dispatch => {
-
-    dispatch(bittrexLoading());
-
-    return bitFetch(main, second);
-  };
+export const BittrexDataFetch = url => async dispatch => {
+  dispatch(bittrexLoading());
+  try {
+    const res = await fetch(`${url}`);
+    const endpoint = await res.json();
+    dispatch(bittrexSuccess(endpoint));
+  } catch (error) {
+    dispatch(bittrexFail(error));
+  }
 };
 
 export const bittrexFail = (error) => {
