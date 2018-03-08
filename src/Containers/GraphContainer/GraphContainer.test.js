@@ -6,6 +6,9 @@ import {
   mapStateToProps,
   mapDispatchToProps
 } from './GraphContainer';
+import * as enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+enzyme.configure({ adapter: new Adapter() });
 import { shallow } from 'enzyme';
 
 describe('GraphContainer tests', () => {
