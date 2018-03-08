@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-import { polFetch } from '../../Utils/apicall';
 import {
   FETCHING_POLONIEX_DATA,
   FETCHING_POLONIEX_DATA_SUCCESS,

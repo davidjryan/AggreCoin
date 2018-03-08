@@ -6,8 +6,7 @@ import {
   VictoryChart,
   VictoryTheme,
   VictoryLegend,
-  VictoryAxis,
-  VictoryLabel
+  VictoryAxis
 } from 'victory';
 import PropTypes from 'prop-types';
 
