@@ -6,14 +6,15 @@ import {
   FETCHING_POLONIEX_DATA_FAIL
 } from '../../Utils/ActionTypes';
 
-export const PoloniexDataFetch = (main, second) => {
-
-  return dispatch => {
-
-    dispatch(poloniexLoading());
-    
-    return polFetch(main, second);
-  };
+export const PoloniexDataFetch = url => async dispatch => {
+  dispatch(poloniexLoading());
+  try {
+    const res = await fetch(`${url}`);
+    const endpoint = await res.json();
+    dispatch(poloniexSuccess(endpoint));
+  } catch (error) {
+    dispatch(poloniexFail(error));
+  }
 };
 
 export const poloniexFail = (error) => {
