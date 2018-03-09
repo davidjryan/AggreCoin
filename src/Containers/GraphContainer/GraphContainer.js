@@ -6,8 +6,7 @@ import {
   VictoryChart,
   VictoryTheme,
   VictoryLegend,
-  VictoryAxis,
-  VictoryLabel
+  VictoryAxis
 } from 'victory';
 import PropTypes from 'prop-types';
 
@@ -76,44 +75,18 @@ export class GraphContainer extends Component {
     if (!this.props.bittrex.bittrexData || !this.props.poloniex.poloniexData) {
       return <div>Loading...</div>;
     }
-    return (
-      <VictoryChart
-        className="chart"
-        theme={VictoryTheme.material}
-        height={230}
-      >
-        <VictoryLegend x={110} y={30}
-          centerTitle
-          orientation="horizontal"
-          gutter={20}
-        
-          style={{ border: { stroke: "black" }, title: { fontSize: 12 } }}
-          data={[
-            { name: "Buy", symbol: { fill: "tomato" } },
-            { name: "Sell", symbol: { fill: "yellow" } }
- 
-          ]}
-        />
-        <VictoryAxis
-          style={{ tickLabels: { fontSize: 5 } }} />
-        
-        <VictoryAxis dependentAxis 
-          style={{ tickLabels: { fontSize: 5 } }} />
-        
-        <VictoryStack>
-          {this.combineData().map((data, i) => {
-            return (
-              <VictoryArea
-                key={i}
-                data={data}
-                interpolation={"step"}
-                scale={{ x: "linear", y: "log" }}
-              />
-            );
-          })}
-        </VictoryStack>
-      </VictoryChart>
-    );
+    return <VictoryChart className="chart" theme={VictoryTheme.material} height={230}>
+      <VictoryLegend x={110} y={30} centerTitle orientation="horizontal" gutter={20} style={{ border: { stroke: "black" }, title: { fontSize: 12 } }} data={[{ name: "Buy", symbol: { fill: "tomato" } }, { name: "Sell", symbol: { fill: "yellow" } }]} />
+      <VictoryAxis style={{ tickLabels: { fontSize: 5 } }} />
+
+      <VictoryAxis dependentAxis style={{ tickLabels: { fontSize: 5 } }} />
+
+      <VictoryStack colorScale={"blue"}>
+        {this.combineData().map((data, i) => {
+          return <VictoryArea key={i} data={data} interpolation={"step"} scale={{ x: "linear", y: "log" }} />;
+        })}
+      </VictoryStack>
+    </VictoryChart>;
   }
 }
 

@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 import { 
   FETCHING_BITTREX_DATA,
   FETCHING_BITTREX_DATA_SUCCESS,

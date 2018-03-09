@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-
 import {
   FETCHING_POLONIEX_DATA,
   FETCHING_POLONIEX_DATA_SUCCESS,
