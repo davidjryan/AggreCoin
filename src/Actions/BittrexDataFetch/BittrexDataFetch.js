@@ -4,10 +4,10 @@ import {
   FETCHING_BITTREX_DATA_FAIL
 } from '../../Utils/ActionTypes';
 
-export const BittrexDataFetch = url => async dispatch => {
+export const BittrexDataFetch = () => async dispatch => {
   dispatch(bittrexLoading());
   try {
-    const res = await fetch(`${url}`);
+    const res = await fetch(`https://bittrex.com/api/v1.1/public/getorderbook?market=BTC-ETH&type=both`);
     const endpoint = await res.json();
     dispatch(bittrexSuccess(endpoint));
   } catch (error) {
