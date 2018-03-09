@@ -13,7 +13,7 @@ export const BittrexDataFetch = (main, second) => async dispatch => {
       `https://bittrex.com/api/v1.1/public/getorderbook?market=${main}-${second}&type=both`
     );
     const endpoint = await res.json();
-    dispatch(bittrexSuccess(endpoint));
+    dispatch(bittrexSuccess(endpoint.result));
   } catch (error) {
     dispatch(bittrexFail(error));
   }
