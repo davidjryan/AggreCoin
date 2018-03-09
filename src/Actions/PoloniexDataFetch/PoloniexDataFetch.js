@@ -5,10 +5,10 @@ import {
   FETCHING_POLONIEX_DATA_FAIL
 } from '../../Utils/ActionTypes';
 
-export const PoloniexDataFetch = () => async dispatch => {
+export const PoloniexDataFetch = (main, second) => async dispatch => {
   dispatch(poloniexLoading());
   try {
-    const res = await fetch(`${url}`);
+    const res = await fetch(`https://poloniex.com/public?command=returnOrderBook&currencyPair=${main}_${second}`);
     const endpoint = await res.json();
     dispatch(poloniexSuccess(endpoint));
   } catch (error) {
