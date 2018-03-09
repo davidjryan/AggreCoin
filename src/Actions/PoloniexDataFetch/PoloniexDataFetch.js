@@ -5,7 +5,7 @@ import {
   FETCHING_POLONIEX_DATA_FAIL
 } from '../../Utils/ActionTypes';
 
-export const PoloniexDataFetch = url => async dispatch => {
+export const PoloniexDataFetch = () => async dispatch => {
   dispatch(poloniexLoading());
   try {
     const res = await fetch(`${url}`);
