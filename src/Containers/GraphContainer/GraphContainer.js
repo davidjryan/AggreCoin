@@ -14,6 +14,7 @@ import './GraphContainer.css';
 
 import { BittrexDataFetch } from '../../Actions/BittrexDataFetch/BittrexDataFetch';
 import { PoloniexDataFetch } from '../../Actions/PoloniexDataFetch/PoloniexDataFetch';
+import { GDAXOrderBookFetch } from '../../Actions/GDAXOrderBookFetch/GDAXOrderBookFetch';
 
 export class GraphContainer extends Component {
 
@@ -21,6 +22,8 @@ export class GraphContainer extends Component {
     const { mainCoin, secondCoin } = this.props.coins;
     this.props.BittrexDataFetch(mainCoin, secondCoin);
     this.props.PoloniexDataFetch(mainCoin, secondCoin);
+    this.props.GDAXOrderBookFetch(mainCoin, secondCoin);
+
   }
 
 
@@ -32,6 +35,7 @@ export class GraphContainer extends Component {
     const { mainCoin, secondCoin } = this.props.coins;
     this.props.BittrexDataFetch(mainCoin, secondCoin);
     this.props.PoloniexDataFetch(mainCoin, secondCoin);
+    this.props.GDAXOrderBookFetch(mainCoin, secondCoin);
   } 
 
   bittrexClean(data) {
@@ -105,11 +109,13 @@ export class GraphContainer extends Component {
 }
 
 export const mapStateToProps = (store) => {
-  const { bittrex, poloniex, coins } = store;
+  const { bittrex, poloniex, coins, gdax } = store;
   return {
+    gdax,
     bittrex,
     poloniex,
     coins
+
   };
 };
 
@@ -117,7 +123,8 @@ export const mapDispatchToProps = (dispatch) => {
 
   return {
     BittrexDataFetch: (first, second) => dispatch(BittrexDataFetch(first, second)),
-    PoloniexDataFetch: (first, second) => dispatch(PoloniexDataFetch(first, second))
+    PoloniexDataFetch: (first, second) => dispatch(PoloniexDataFetch(first, second)),
+    GDAXOrderBookFetch: (first, second) => dispatch(GDAXOrderBookFetch(first, second))
   };
 };
 
