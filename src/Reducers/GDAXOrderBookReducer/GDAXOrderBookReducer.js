@@ -1,7 +1,7 @@
 import {
-  FETCHING_GDAX_DATA,
-  FETCHING_GDAX_DATA_SUCCESS,
-  FETCHING_GDAX_DATA_FAIL
+  FETCHING_GDAX_ORDERBOOK,
+  FETCHING_GDAX_ORDERBOOK_SUCCESS,
+  FETCHING_GDAX_ORDERBOOK_FAIL
 } from "../../Utils/ActionTypes";
 
 const initialState = {
@@ -11,9 +11,9 @@ const initialState = {
   errorMessage: null
 };
 
-const GDAXFetchReducer = (state = initialState, action) => {
+const GDAXOrderBookReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCHING_GDAX_DATA:
+    case FETCHING_GDAX_ORDERBOOK:
       return {
         ...state,
         isLoading: true,
@@ -21,7 +21,7 @@ const GDAXFetchReducer = (state = initialState, action) => {
         hasErrored: false,
         errorMessage: null
       };
-    case FETCHING_GDAX_DATA_SUCCESS:
+    case FETCHING_GDAX_ORDERBOOK_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -29,7 +29,7 @@ const GDAXFetchReducer = (state = initialState, action) => {
         hasErrored: false,
         errorMessage: null
       };
-    case FETCHING_GDAX_DATA_FAIL:
+    case FETCHING_GDAX_ORDERBOOK_FAIL:
       return {
         ...state,
         isLoading: false,
@@ -42,4 +42,4 @@ const GDAXFetchReducer = (state = initialState, action) => {
   }
 };
 
-export default GDAXFetchReducer;
+export default GDAXOrderBookReducer;
