@@ -35,6 +35,7 @@ export class GraphContainer extends Component {
   } 
 
   bittrexClean(data) {
+    console.log("bittrex raw", data);
     let sum = 0;
     const dataTruncated = data.splice(0, 50);
     const cleanData = dataTruncated.map((order) => {
@@ -44,7 +45,7 @@ export class GraphContainer extends Component {
         y: sum
       };
     });
-
+    console.log("bittrex", cleanData);
     return cleanData;
   }
 
@@ -57,18 +58,21 @@ export class GraphContainer extends Component {
         y: sum
       };
     });
-
+    console.log("poloniex", cleanData)
     return cleanData;
   }
 
-  combineData() {
+  combineBuy() {
     const { bittrex, poloniex } = this.props;
-    return [[
-      ...this.bittrexClean(bittrex.bittrexData.buy),
-      ...this.poloniexClean(poloniex.poloniexData.bids)],
-    [...this.bittrexClean(bittrex.bittrexData.sell), 
-      ...this.poloniexClean(poloniex.poloniexData.asks)]];
+    return [this.bittrexClean(bittrex.bittrexData.buy), this.poloniexClean(poloniex.poloniexData.bids)];
   }
+
+  combineSell() {
+    const { bittrex, poloniex } = this.props;
+    return [this.bittrexClean(bittrex.bittrexData.sell), this.poloniexClean(poloniex.poloniexData.asks)];
+  }
+
+
 
 
   render() {
@@ -81,9 +85,19 @@ export class GraphContainer extends Component {
 
       <VictoryAxis dependentAxis style={{ tickLabels: { fontSize: 5 } }} />
 
-      <VictoryStack colorScale={"blue"}>
-        {this.combineData().map((data, i) => {
-          return <VictoryArea key={i} data={data} interpolation={"step"} scale={{ x: "linear", y: "log" }} />;
+      <VictoryStack colorScale={"red"}>
+        {this.combineSell().map((data, i) => {
+          return (
+            <VictoryArea key={i} data={data} interpolation={"basis"} scale={{ x: "linear", y: "log" }} />
+          );
+        })}
+      </VictoryStack>
+      
+      <VictoryStack colorScale={"green"}>
+        {this.combineBuy().map((data, i) => {
+          return (
+            <VictoryArea key={i} data={data} interpolation={"basis"} scale={{ x: "linear", y: "log" }} />
+          );
         })}
       </VictoryStack>
     </VictoryChart>;
