@@ -23,7 +23,6 @@ export class GraphContainer extends Component {
     this.props.BittrexDataFetch(mainCoin, secondCoin);
     this.props.PoloniexDataFetch(mainCoin, secondCoin);
     this.props.GDAXOrderBookFetch(mainCoin, secondCoin);
-
   }
 
 
@@ -84,29 +83,48 @@ export class GraphContainer extends Component {
       return <div>Loading...</div>;
     }
     return <VictoryChart className="chart" theme={VictoryTheme.material} height={230}>
-      <VictoryLegend x={110} y={30} centerTitle orientation="horizontal" gutter={20} style={{ border: { stroke: "black" }, title: { fontSize: 12 } }} data={[{ name: "Buy", symbol: { fill: "tomato" } }, { name: "Sell", symbol: { fill: "yellow" } }]} />
-      <VictoryAxis style={{ tickLabels: { fontSize: 5 } }} />
+        <VictoryLegend 
+          x={50} 
+          y={30} 
+          centerTitle orientation="horizontal" 
+          gutter={20} 
+          style={{ border: { stroke: "black" }, title: { fontSize: 5 } }} 
+          data={legendData} 
+        />
+        
+        <VictoryAxis style={{ tickLabels: { fontSize: 5 } }} />
 
-      <VictoryAxis dependentAxis style={{ tickLabels: { fontSize: 5 } }} />
+        <VictoryAxis dependentAxis style={{ tickLabels: { fontSize: 5 } }} />
 
-      <VictoryStack colorScale={"red"}>
-        {this.combineSell().map((data, i) => {
-          return (
-            <VictoryArea key={i} data={data} interpolation={"basis"} scale={{ x: "linear", y: "log" }} />
-          );
-        })}
-      </VictoryStack>
-      
-      <VictoryStack colorScale={"green"}>
-        {this.combineBuy().map((data, i) => {
-          return (
-            <VictoryArea key={i} data={data} interpolation={"basis"} scale={{ x: "linear", y: "log" }} />
-          );
-        })}
-      </VictoryStack>
-    </VictoryChart>;
+        <VictoryStack colorScale={"red"}>
+          {this.combineSell().map((data, i) => {
+            return <VictoryArea key={i} data={data} interpolation={"basis"} scale={{ x: "linear", y: "log" }} />;
+          })}
+        </VictoryStack>
+
+        <VictoryStack colorScale={"green"}>
+          {this.combineBuy().map((data, i) => {
+            return <VictoryArea key={i} data={data} interpolation={"basis"} scale={{ x: "linear", y: "log" }} />;
+          })}
+        </VictoryStack>
+      </VictoryChart>;
   }
 }
+
+const legendData = [
+  { name: "Bittrex Buy", symbol: { fill: "#364624" }, labels: { fontSize: 5 } },
+  { name: "Bittrex Sell", symbol: { fill: "coral" }, labels: { fontSize: 5 } },
+  {
+    name: "Poloniex Buy",
+    symbol: { fill: "#476534" },
+    labels: { fontSize: 5 }
+  },
+  {
+    name: "Poloniex Sell",
+    symbol: { fill: "lightsalmon" },
+    labels: { fontSize: 5 }
+  }
+];
 
 export const mapStateToProps = (store) => {
   const { bittrex, poloniex, coins, gdax } = store;
@@ -115,7 +133,6 @@ export const mapStateToProps = (store) => {
     bittrex,
     poloniex,
     coins
-
   };
 };
 
