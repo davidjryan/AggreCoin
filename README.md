@@ -3,10 +3,10 @@
 ## A Crypto Exchange Orderbook Aggregator
 
 ## Warning
-	This is a work in progress. Wishlist with associated issues below.
+This is a work in progress. Wishlist with associated issues below.
 
 ## Overview
-	This is a simple orderbook aggregator built with Victory.js/React-Redux. Instead of consolidating the data into a single chart I attempted to use Victory's area stack to diferentiate between exchange orders. Unfortunately this only works if the "x" values (the prices) are consistant across the stacked data sets. I had considered trying to normalize the pricing data a few different ways either by rounding or filling in gaps with dummy entries, but accounting for all possible coin combinations could quickly become an unmaintainble problem if the app were to scale and add more exchanges. At this point I could scrap the area stack attempt and just do a consolidation since the intention of the app is simply to get a rough idea of where the current market psychology is at for a given coin to coin market.
+This is a simple orderbook aggregator built with Victory.js/React-Redux. Instead of consolidating the data into a single chart I attempted to use Victory's area stack to diferentiate between exchange orders. Unfortunately this only works if the "x" values (the prices) are consistant across the stacked data sets. I had considered trying to normalize the pricing data a few different ways either by rounding or filling in gaps with dummy entries, but accounting for all possible coin combinations could quickly become an unmaintainble problem if the app were to scale and add more exchanges. At this point I could scrap the area stack attempt and just do a consolidation since the intention of the app is simply to get a rough idea of where the current market psychology is at for a given coin to coin market.
 
 ## Wishlist
 
