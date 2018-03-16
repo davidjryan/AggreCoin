@@ -15,3 +15,4 @@ This is a simple orderbook aggregator built with Victory.js/React-Redux. Instead
  - Roll my own drop down components.
  - Turn into a PWA or rewrite in react-native
  - Integrate Firebase for a simple user profile to store coin favorites and an opportunity to use react-router
+ - Create a minimal/flat user interface design
