@@ -1,5 +1,7 @@
 # AggreCoin
 
+![Alt Text](https://media.giphy.com/media/csxqz1YvSXGnvRexyX/giphy.gif)
+
 ## A Crypto Exchange Orderbook Aggregator
 
 ## Warning
